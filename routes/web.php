@@ -17,4 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/words', '\App\Http\Controllers\WordsController@index');
+
+Route::prefix('words')->group(function(){
+  Route::get('/', '\App\Http\Controllers\WordsController@index')->name("words");
+  Route::post('/add', '\App\Http\Controllers\WordsController@add')->name("words_add");
+});
