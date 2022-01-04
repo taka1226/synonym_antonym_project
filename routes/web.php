@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('groups')->group(function(){
+  Route::get('/', '\App\Http\Controllers\GroupsController@index')->name("groups");
+  Route::post('/add', '\App\Http\Controllers\GroupsController@add')->name("groups_add");
+});
